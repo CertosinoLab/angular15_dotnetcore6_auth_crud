@@ -1,0 +1,50 @@
+<div class="signin-container">
+    <mat-card *ngIf="!signedIn; else signedInAlready">
+        <mat-card-content>
+            <div style="padding: 25px;"><b>Please Sign In to continue</b></div>
+            <form [formGroup]="loginForm" (ngSubmit)="signIn($event)">
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" />
+                    <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+                        Email is required
+                    </mat-error>
+                    <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+                        Invalid email format
+                    </mat-error>
+                </mat-form-field>
+                <br />
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" formControlName="password" />
+                    <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+                        Password is required
+                    </mat-error>
+                </mat-form-field>
+                <div *ngIf="authFailed">
+                    <label style="color: red">Invalid credentials</label>
+                </div>
+                <div>
+                    <button style="width: 100px;"
+                            mat-raised-button
+                            color="primary"
+                            [disabled]="loginForm.invalid"
+                            type="submit">
+                        Sign In
+                    </button>
+                </div>
+            </form>
+        </mat-card-content>
+        <span style="padding: 15px; padding-top: 0px; text-align: left; font-size: 10px;">Background image from:
+            <a href="https://www.pexels.com/@jplenio/">Johannes Plenio</a></span>
+    </mat-card>
+
+    <ng-template #signedInAlready>
+
+        <h4>Sign In</h4>
+        <div>
+            You are already signed in!
+        </div>
+    </ng-template>
+
+</div>

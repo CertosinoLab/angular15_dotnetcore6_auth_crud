@@ -1,0 +1,14 @@
+<mat-form-field>
+  <mat-select [formControl]="customersCtrl" placeholder="Customer" #singleSelect>
+    <mat-option>
+      <ngx-mat-select-search placeholderLabel="Find customer..."
+                             [formControl]="customersFilterCtrl"
+                             noEntriesFoundLabel="no matching customer found"></ngx-mat-select-search>
+    </mat-option>
+
+    <mat-option *ngFor="let customer of filteredCustomers | async" [value]="customer">
+      {{customer.fullName}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+

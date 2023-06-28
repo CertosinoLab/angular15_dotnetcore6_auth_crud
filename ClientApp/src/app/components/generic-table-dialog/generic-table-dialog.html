@@ -1,0 +1,166 @@
+<div *ngIf="data.dialogType === 'details'">
+  <h1 mat-dialog-title>{{formattedColumnName()}}</h1>
+  <div mat-dialog-content>
+   <div *ngFor="let item of objectList"><b>{{item.property}}: </b>{{item.value}}</div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Close</button>
+  </div>
+</div>
+
+<div *ngIf="(data.dialogType === 'add' || data.dialogType === 'edit')
+   && data.currentTableType === 'Customers'">
+  <h1 mat-dialog-title>New Customer</h1>
+  <div mat-dialog-content>
+    <mat-form-field class="generic-table-form">
+      <mat-label>Full Name</mat-label>
+      <input [(ngModel)] = "customer.fullName" matInput>
+    </mat-form-field>
+    <mat-form-field class="generic-table-form">
+      <mat-label>Email</mat-label>
+      <input [(ngModel)] = "customer.email" matInput>
+    </mat-form-field>
+    <br />
+    <mat-form-field class="generic-table-form">
+      <mat-label>Password</mat-label>
+      <input [(ngModel)] = "customer.password" matInput>
+    </mat-form-field>
+    <mat-form-field class="generic-table-form">
+      <mat-label>Default Shipping Address</mat-label>
+      <input [(ngModel)] = "customer.defaultShippingAddress" matInput>
+    </mat-form-field>
+    <br />
+    <mat-form-field class="generic-table-form">
+      <mat-label>Billing Address</mat-label>
+      <input [(ngModel)] = "customer.billingAddress" matInput>
+    </mat-form-field>
+    <mat-form-field class="generic-table-form">
+      <mat-label>Phone</mat-label>
+      <input [(ngModel)] = "customer.phone" matInput>
+    </mat-form-field>
+    <br />
+    <mat-form-field class="generic-table-form">
+      <mat-label>Country</mat-label>
+      <input [(ngModel)] = "customer.country" matInput>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Close</button>
+    <button *ngIf="data.dialogType === 'add'" mat-button color="primary" (click)="createCustomer()">Save</button>
+    <button *ngIf="data.dialogType === 'edit'" mat-button color="primary" (click)="updateCustomer()">Update</button>
+  </div>
+</div>
+
+<div *ngIf="(data.dialogType === 'add' || data.dialogType === 'edit')
+   && data.currentTableType === 'Employees'">
+  <h1 mat-dialog-title>New Employees</h1>
+  <div mat-dialog-content>
+    <mat-form-field class="generic-table-form">
+      <mat-label>Full Name</mat-label>
+      <input [(ngModel)] = "employee.fullName" matInput>
+    </mat-form-field>
+    <mat-form-field class="generic-table-form">
+      <mat-label>Address</mat-label>
+      <input [(ngModel)] = "employee.address" matInput>
+    </mat-form-field>
+    <br />
+    <mat-form-field class="generic-table-form">
+      <mat-label>Phone</mat-label>
+      <input [(ngModel)] = "employee.phone" matInput>
+    </mat-form-field>
+    <mat-form-field class="generic-table-form">
+      <mat-label>Job</mat-label>
+      <input [(ngModel)] = "employee.job" matInput>
+    </mat-form-field>
+    <br />
+    <mat-form-field class="generic-table-form">
+      <mat-label>Role</mat-label>
+      <input [(ngModel)] = "employee.role" matInput>
+    </mat-form-field>
+    <mat-form-field class="generic-table-form">
+      <mat-label>Salary</mat-label>
+      <input [(ngModel)] = "employee.salary" matInput>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Close</button>
+    <button *ngIf="data.dialogType === 'add'" mat-button color="primary" (click)="createEmployee()">Save</button>
+    <button *ngIf="data.dialogType === 'edit'" mat-button color="primary" (click)="updateEmployee()">Update</button>
+  </div>
+</div>
+
+<div *ngIf="(data.dialogType === 'add' || data.dialogType === 'edit')
+   && data.currentTableType === 'Products'">
+  <h1 mat-dialog-title>New Product</h1>
+  <div mat-dialog-content>
+    <mat-form-field class="generic-table-form">
+      <mat-label>Name</mat-label>
+      <input [(ngModel)] = "product.name" matInput>
+    </mat-form-field>
+    <mat-form-field class="generic-table-form">
+      <mat-label>Weight</mat-label>
+      <input [(ngModel)] = "product.weight" matInput>
+    </mat-form-field>
+    <br />
+    <mat-form-field class="generic-table-form">
+      <mat-label>Create Date</mat-label>
+      <input [(ngModel)] = "product.createDate" matInput>
+    </mat-form-field>
+    <mat-form-field class="generic-table-form">
+      <mat-label>Description</mat-label>
+      <input [(ngModel)] = "product.description" matInput>
+    </mat-form-field>
+    <br />
+    <mat-form-field class="generic-table-form">
+      <mat-label>Price</mat-label>
+      <input [(ngModel)] = "product.price" matInput>
+    </mat-form-field>
+    <mat-form-field class="generic-table-form">
+      <mat-label>Sku</mat-label>
+      <input [(ngModel)] = "product.sku" matInput>
+    </mat-form-field>
+    <br />
+    <mat-form-field class="generic-table-form">
+      <mat-label>Stock</mat-label>
+      <input [(ngModel)] = "product.stock" matInput>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Close</button>
+    <button *ngIf="data.dialogType === 'add'" mat-button color="primary" (click)="createProduct()">Save</button>
+    <button *ngIf="data.dialogType === 'edit'" mat-button color="primary" (click)="updateProduct()">Update</button>
+  </div>
+</div>
+
+<div *ngIf="(data.dialogType === 'add' || data.dialogType === 'edit')
+   && data.currentTableType === 'Orders'">
+  <h1 mat-dialog-title>New Order</h1>
+  <div mat-dialog-content>
+    <mat-form-field class="generic-table-form">
+      <mat-label>Shipping Address</mat-label>
+      <input [(ngModel)]="order.shippingAddress" matInput>
+    </mat-form-field>
+    <mat-form-field class="generic-table-form">
+      <mat-label>Order Status</mat-label>
+      <input [(ngModel)]="order.orderStatus" matInput>
+    </mat-form-field>
+    <br />
+    <app-customer-search-input style="margin-top: 0px;" class="generic-table-form"
+                               [dialogType]="data.dialogType"
+                               [orderId] ="order.id"
+                             (selectOption)="setIdCustomer($event)"></app-customer-search-input>
+    <app-product-search-input style="margin-top: 0px;" class="generic-table-form"
+                              [dialogType]="data.dialogType"
+                              [orderId] ="order.id"
+                             (selectOption)="setIdProduct($event)"></app-product-search-input>
+    <br />
+
+
+
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Close</button>
+    <button *ngIf="data.dialogType === 'add'" mat-button color="primary" (click)="createOrder()">Save</button>
+    <button *ngIf="data.dialogType === 'edit'" mat-button color="primary" (click)="updateOrder()">Update</button>
+  </div>
+</div>

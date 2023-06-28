@@ -1,0 +1,51 @@
+<div class="header">
+  <h1 class="company-name">EcomDash</h1>
+</div>
+
+<mat-divider></mat-divider>
+
+<mat-nav-list>
+    <mat-list-item routerLink="/user" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+                   class="custom-menu-item" (click)="removeFocus()">
+        <div class="custom-menu-item-content">
+            <mat-icon>account_circle</mat-icon>
+            <span class="custom-menu-item-text">Profile</span>
+        </div>
+    </mat-list-item>
+    <mat-list-item routerLink="/dashboard" routerLinkActive="active" class="custom-menu-item" (click)="removeFocus()">
+        <div class="custom-menu-item-content">
+            <mat-icon>bar_chart</mat-icon>
+            <span class="custom-menu-item-text">Dashboard</span>
+        </div>
+    </mat-list-item>
+    <mat-list-item routerLink="/employees" routerLinkActive="active" class="custom-menu-item" (click)="removeFocus()">
+        <div class="custom-menu-item-content">
+            <mat-icon>assignment_ind</mat-icon>
+            <span class="custom-menu-item-text">Employees</span>
+        </div>
+    </mat-list-item>
+    <mat-list-item routerLink="/orders" routerLinkActive="active" class="custom-menu-item" (click)="removeFocus()">
+        <div class="custom-menu-item-content">
+            <mat-icon>list_alt</mat-icon>
+            <span class="custom-menu-item-text">Orders</span>
+        </div>
+    </mat-list-item>
+    <mat-list-item routerLink="/customers" routerLinkActive="active" class="custom-menu-item" (click)="removeFocus()">
+        <div class="custom-menu-item-content">
+            <mat-icon>people_outline</mat-icon>
+            <span class="custom-menu-item-text">Customers</span>
+        </div>
+    </mat-list-item>
+    <mat-list-item routerLink="/products" routerLinkActive="active" class="custom-menu-item" (click)="removeFocus()">
+        <div class="custom-menu-item-content">
+            <mat-icon>shop</mat-icon>
+            <span class="custom-menu-item-text">Products</span>
+        </div>
+    </mat-list-item>
+    <mat-list-item class="custom-menu-item" (click)="signout()">
+        <div class="custom-menu-item-content">
+            <mat-icon>exit_to_app</mat-icon>
+            <span class="custom-menu-item-text">Logout</span>
+        </div>
+    </mat-list-item>
+</mat-nav-list>

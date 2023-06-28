@@ -1,0 +1,12 @@
+<body>
+    <mat-drawer-container *ngIf="!isSigninRoute()" class="example-container full-height">
+        <mat-drawer style="width: 15%; max-width: 300px; min-width: 190px;" mode="side" opened>
+            <app-sidebar-navigation></app-sidebar-navigation>
+        </mat-drawer>
+        <mat-drawer-content>
+            <router-outlet></router-outlet>
+        </mat-drawer-content>
+    </mat-drawer-container>
+
+    <app-signin-component *ngIf="isSigninRoute()"></app-signin-component>
+</body>

@@ -1,0 +1,47 @@
+.paginator-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.icon-paginator {
+  cursor: pointer;
+  padding-top: 15px;
+}
+
+.icon-paginator:hover {
+  color: rgb(95, 147, 166);
+}
+
+.paginator-details {
+  padding-top: 17.5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.mat-mdc-header-cell {
+  cursor: pointer;
+}
+
+.mat-mdc-header-cell:hover {
+  background-color: rgb(187, 205, 210);
+}
+
+.sorting-text-icon {
+  display: flex;
+}
+
+.paginator-container > .mat-icon {
+  height: 100%;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+.loading-spinner mat-progress-spinner {
+  width: 30px;
+  height: 30px;
+}

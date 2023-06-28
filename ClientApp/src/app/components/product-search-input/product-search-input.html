@@ -1,0 +1,10 @@
+<mat-form-field>
+  <mat-select [formControl]="productsCtrl" placeholder="Product" #singleSelect>
+    <mat-option>
+      <ngx-mat-select-search placeholderLabel="Find product..."
+                             [formControl]="productsFilterCtrl"
+                             noEntriesFoundLabel="No matching product found"></ngx-mat-select-search>
+    </mat-option>
+    <mat-option *ngFor="let product of filteredProducts | async" [value]="product">
+      {{product.name}}
+    </mat-option>

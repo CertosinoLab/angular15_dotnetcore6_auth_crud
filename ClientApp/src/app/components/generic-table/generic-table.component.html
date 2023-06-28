@@ -1,0 +1,85 @@
+<div class="mat-elevation-z8">
+    <div class="loading-spinner" *ngIf="isLoading">
+        <mat-progress-spinner mode="indeterminate" diameter="30"></mat-progress-spinner>
+    </div>
+    <div *ngIf="!isLoading">
+        <table mat-table [dataSource]="dataSource">
+            <ng-container *ngFor="let column of displayedColumns; let last = last" matColumnDef="{{column}}">
+                <th mat-header-cell *matHeaderCellDef (click)="changeOrderField(column, sortDirection)">
+                    <div class="sorting-text-icon">
+                        {{column | formatColumnName}}
+                        <mat-icon *ngIf="sortField.toUpperCase() === column.toUpperCase()
+            && sortDirection === 'desc' && column !== 'actions'">arrow_upward</mat-icon>
+                        <mat-icon *ngIf="sortField.toUpperCase() === column.toUpperCase()
+             && sortDirection === 'asc' && column !== 'actions'">arrow_downward</mat-icon>
+                    </div>
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    <button (click)="openDialog('details', column, element[column])" mat-button
+                            *ngIf="checkIfIsObject(element[column])">
+                        {{element[column] | formatColumnDataObject}}
+                    </button>
+                    <div *ngIf="!checkIfIsObject(element[column])">
+                        <span *ngIf="column !== 'actions'">{{element[column]}}</span>
+                        <div *ngIf="column === 'actions'">
+                            <button (click)="openDialog('edit', '', element)"
+                                    mat-icon-button color="primary">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <button (click)="deleteElement(element)"
+                                    mat-icon-button color="warn">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <div style="display: flex;">
+            <div style="width: 10%; padding-top: 16px; padding-left: 12px;">
+                <button *ngIf="isAdmin" (click)="openDialog('add', '', null)" mat-raised-button color="primary">
+                    <mat-icon fontIcon="add"></mat-icon>
+                    Add
+                </button>
+            </div>
+            <div class="paginator-container" style="width: 90%;">
+                <mat-icon class="icon-paginator" (click)="handlePageEvent('first')">first_page</mat-icon>
+                <mat-icon class="icon-paginator" (click)="handlePageEvent('back')">keyboard_arrow_left</mat-icon>
+
+                <div>
+                    <mat-form-field style="max-width: 70px;">
+                        <mat-select hideSingleSelectionIndicator [(ngModel)]="selectedPage" (selectionChange)="changePage()">
+                            <mat-option *ngFor="let page of pagesArray" [value]="page">{{ page }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <span>/ {{convertedResult.TotalPages}}</span>
+                </div>
+
+                <mat-icon class="icon-paginator" (click)="handlePageEvent('next')">keyboard_arrow_right</mat-icon>
+                <mat-icon class="icon-paginator" (click)="handlePageEvent('last')">last_page</mat-icon>
+
+                <div class="paginator-details">
+                    <span>{{convertedResult.RecordFrom}} - </span>
+                    <span>{{convertedResult.RecordTo}} of </span>
+                    <span>{{convertedResult.TotalCount}}</span>
+                </div>
+
+                <div class="paginator-details" style="padding-right: 5px;">
+                    <span>Records:</span>
+                </div>
+                <div style="padding-right: 40px;">
+                    <mat-form-field style="max-width: 70px;">
+                        <mat-select hideSingleSelectionIndicator [(ngModel)]="selectedPageSize" (selectionChange)="changePageSize()">
+                            <mat-option *ngFor="let pageSize of pagesArraySize" [value]="pageSize">{{ pageSize }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
